@@ -15,6 +15,6 @@ Projeto criado para os seguintes estudos
 * Dependecy Injection
 
 ## Rodar API (CLI .NET)
-* ```dotnet ef migrations add "insira aqui um nome para sua Initial"```
+* ```dotnet ef migrations add "insira_aqui_um_nome_para_sua_migration"```
 * ```dotnet ef database update``` -> Para criar a database de acordo com o DefaultConnection no arquivo appsettings.json
 * ir até ao projeto CleanArch.API e dentro da pasta rodar o comando -> ```dotnet run```
