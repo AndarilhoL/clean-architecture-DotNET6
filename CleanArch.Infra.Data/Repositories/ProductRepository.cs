@@ -14,6 +14,11 @@ namespace CleanArch.Infra.Data.Repositories
             _context = context;
         }
 
+        public async Task<IEnumerable<Product>> GetProductsAsync()
+        {
+            return await _context.Products.ToListAsync();
+        }
+
         public async Task<Product> GetByIdAsync(long? id)
         {
             return await _context.Products.FindAsync(id);
@@ -25,7 +30,7 @@ namespace CleanArch.Infra.Data.Repositories
             return category.First();
         }
 
-        public async Task<IEnumerable<Product>> GetCategoriesAsync()
+        public async Task<IEnumerable<Product>> Get()
         {
             return await _context.Products.ToListAsync();
         }
@@ -37,7 +42,7 @@ namespace CleanArch.Infra.Data.Repositories
                 .SingleOrDefaultAsync(p => p.Id == id);
 
             return product;
-        }   
+        }
 
         public async Task<Product> CreateAsync(Product product)
         {
@@ -53,7 +58,7 @@ namespace CleanArch.Infra.Data.Repositories
             return product;
         }
 
-        public async Task DeleteAsync(long id)
+        public async Task DeleteAsync(long? id)
         {
             var product = await _context.Products.FindAsync(id);
             _context.Products.Remove(product);
