@@ -9,6 +9,6 @@ namespace CleanArch.Domain.Interfaces
         Task<Category> GetByNameAsync(string name);
         Task<Category> CreateAsync(Category category);
         Task<Category> UpdateAsync(Category category); 
-        Task DeleteAsync(long id);
+        Task DeleteAsync(long? id);
     }
 }

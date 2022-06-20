@@ -43,7 +43,7 @@ namespace CleanArch.Infra.Data.Repositories
             await _context.SaveChangesAsync();
             return category;
         }
-        public async Task DeleteAsync(long id)
+        public async Task DeleteAsync(long? id)
         {
             var category = await _context.Categories.FindAsync(id);
             _context.Categories.Remove(category);
