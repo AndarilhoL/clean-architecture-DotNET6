@@ -21,7 +21,10 @@ namespace CleanArch.Infra.Data.Repositories
 
         public async Task<Product> GetByIdAsync(long? id)
         {
-            return await _context.Products.FindAsync(id);
+            //return await _context.Products.FindAsync(id);
+            return await _context.Products
+                .Include(c => c.Category)
+                .SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<Product> GetByNameAsync(string name)
@@ -35,14 +38,14 @@ namespace CleanArch.Infra.Data.Repositories
             return await _context.Products.ToListAsync();
         }
 
-        public async Task<Product> GetProductCategoryAsync(long? id)
-        {
-            var product = await _context.Products
-                .Include(c => c.Category)
-                .SingleOrDefaultAsync(p => p.Id == id);
-
-            return product;
-        }
+        //public async Task<Product> GetProductCategoryAsync(long? id)
+        //{
+        //    var product = await _context.Products
+        //        .Include(c => c.Category)
+        //        .SingleOrDefaultAsync(p => p.Id == id);
+        //
+        //    return product;
+        //}
 
         public async Task<Product> CreateAsync(Product product)
         {
